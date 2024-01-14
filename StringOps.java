@@ -49,27 +49,27 @@ public class StringOps {
         return newString;
     }
 
-    //public static String camelCase (String string) {
-    //     String newString = "";
-    //     for(int i = 0; i < string.length(); i++) {
-    //         while (string.charAt[i] == ' ') {
-    //         i++;         
-    //             if (newString != "") {
-    //                 if (string.charAt[i] >= 65 || string.charAt[i] <= 90) {
-    //                         newString += (char)(string.charAt[i] + 32); 
-    //                 }   else {
-    //                          newString += (char)(string.charAt[i]);
-    //                     }
-    //                 }
-    //         }
-    //         i++;
-    //         }
-    //         if(string.charAt(i) >= 65 && string.charAt(i) <= 90) {
-    //            newString += (char)(string.charAt(i) + 32); 
-    //         } else {
-    //             newString += (char)(string.charAt(i));
-    //         }
-    //    }
+    public static String camelCase (String string) {
+        String newString = "";
+        for(int i = 0; i < string.length(); i++) {
+            while (string.charAt[i] == ' ') {
+            i++;         
+                if (newString != "") {
+                    if (string.charAt[i] >= 65 || string.charAt[i] <= 90) {
+                            newString += (char)(string.charAt[i] + 32); 
+                    }   else {
+                             newString += (char)(string.charAt[i]);
+                        }
+                    }
+            }
+            i++;
+            }
+            if(string.charAt(i) >= 65 && string.charAt(i) <= 90) {
+               newString += (char)(string.charAt(i) + 32); 
+            } else {
+                newString += (char)(string.charAt(i));
+            }
+       }
     
 
     public static int[] allIndexOf (String string, char chr) {
