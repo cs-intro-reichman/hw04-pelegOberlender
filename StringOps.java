@@ -22,11 +22,7 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-        System.out.println(capVowelsLowRest("One two tHRee world"));
-        System.out.println(allIndexOf("Hello world", 'l'));
-        int [] array = allIndexOf("Hello world", 'l'); 
-        for (int i= 0; i < array.length; i++) {
-            System.out.println(array[i]);
+        
         }
         
         
