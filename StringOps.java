@@ -22,70 +22,70 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
+        System.out.println(capVowelsLowRest("One two tHRee world"));
+        int [] array = allIndexOf("Hello world", 'l'); 
+        for (int i= 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
+        
+        
     }
 
     public static String capVowelsLowRest (String string) {
-        int sLength =string.length();
-        String newWord = "";
-        for (int i = 0 ; i < sLength ; i++){
-            char currentChar = string.charAt(i);
-            if (currentChar == 'a' ||currentChar ==  'e' ||currentChar ==  'i' ||currentChar ==  'o' ||currentChar ==  'u'){
-                newWord += (char)(currentChar - 32);
-            }
-            else if (currentChar == 32){
-                newWord += currentChar;
-            }
-            else if (currentChar >= 'A' && currentChar <= 'Z' && (currentChar != 'A' && currentChar != 'E' && currentChar != 'I' && currentChar != 'O' && currentChar != 'U')) {
-                newWord += (char)(currentChar + 32);
-            }
+        String newString = "";
+        for(int i = 0; i < string.length(); i++) {
+            char charCurrent = string.charAt(i);
+            if(charCurrent == 'a' || charCurrent == 'e'|| charCurrent == 'i'|| charCurrent == 'o' || charCurrent == 'u') {
+            newString += (char)(charCurrent - 32); 
+            }   
+            else if (charCurrent >= 65 && charCurrent <= 90) {
+                newString += (char)(charCurrent + 32); 
+            } 
             else {
-                newWord += currentChar;
+                newString += charCurrent;  
             }
         }
-        return newWord;
+        return newString;
     }
 
-    public static String camelCase (String string) {
-        String res = "";
-
-        for (int i = 0; i < string.length() ; i++){
-            while (string.charAt(i) == ' '){
-                i++;
-                if (res != ""){
-                  if (string.charAt(i) >= 'a' && string.charAt(i) <= 'z'){
-                    res += (char)(string.charAt(i) - 32);
-                    i++;
-                  }
-                  else if (string.charAt(i) >= 'A' && string.charAt(i) <= 'Z'){
-                    res += string.charAt(i);
-                    i++;
-                  }
-                }
-            }
-            if (string.charAt(i) >= 'A' && string.charAt(i) <= 'Z'){
-                res += (char)(string.charAt(i) + 32);
-            }
-            else {
-                res += string.charAt(i);
-            }
-        }
-                return res;
-    }
-
+    // public static String camelCase (String string) {
+    //     String newString = "";
+    //     for(int i = 0; i < string.length(); i++) {
+    //         while (string.charAt[i] == ' ') {
+    //         i++;         
+    //             if (newString != "") {
+    //                 if (string.charAt[i] >= 65 || string.charAt[i] <= 90) {
+    //                         newString += (char)(string.charAt[i] + 32); 
+    //                 }   else {
+    //                          newString += (char)(string.charAt[i]);
+    //                     }
+    //                 }
+    //         }
+    //         i++;
+    //         }
+    //         if(string.charAt(i) >= 65 && string.charAt(i) <= 90) {
+    //            newString += (char)(string.charAt(i) + 32); 
+    //         } else {
+    //             newString += (char)(string.charAt(i));
+    //         }
+    //    }
+    
 
     public static int[] allIndexOf (String string, char chr) {
-        int [] arr = new int [string.length()];
-        int size = 0;
-        for (int i = 0; i < string.length() ; i++){
-            if ((char)string.charAt(i) == chr){
-                arr [size] = i;
-                size++;
+        int counter = 0;
+        for(int i = 0; i < string.length(); i++) {
+            if(string.charAt(i) == chr) {
+                counter++;
             }
         }
-        int [] res = new int [size];
-        for (int k = 0; k < size; k++){
-            res [k] = arr [k];
-        }
-        return res;
+        int [] arrayChar = new int [counter]; 
+        int index = 0;
+        for(int i = 0; i < string.length(); i++) {
+            if(string.charAt(i) == chr) {
+                arrayChar[index] = i;
+                index++;          
+            }
+        } 
+        return arrayChar;
     }
 }
