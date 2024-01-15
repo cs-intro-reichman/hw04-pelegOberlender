@@ -24,7 +24,7 @@ public class StringOps {
     public static void main(String[] args) {
         String str = "Hello";
         System.out.println(capVowelsLowRest(str));
-        System.out.println(camelCase("Hello World"));
+        System.out.println(camelCase("     hello    wOrLd"));
         // System.out.println(capVowelsLowRest("One two tHRee world"));
         int[] array = allIndexOf("MMMM", 'M');
         for (int i = 0; i < array.length; i++) {
@@ -55,18 +55,19 @@ public class StringOps {
             while (string.charAt(i) == ' ') {
                 i++;
                 if (newString != "" && string.charAt(i) != ' ') {
-                    if (string.charAt(i) >= 65 || string.charAt(i) <= 90) {
-                        newString += (char) (string.charAt(i) + 32);
+                    if (string.charAt(i) >= 97 && string.charAt(i) <= 122) {
+                        newString += (char)(string.charAt(i) - 32);
+                        i++;
                     } else {
-                        newString += (char) (string.charAt(i));
-                    }
-                }
-             i++;
+                        newString += (char)(string.charAt(i));
+                        i++;
+                    }        
+                } 
             }
             if (string.charAt(i) >= 65 && string.charAt(i) <= 90) {
-                newString += (char) (string.charAt(i) + 32);
+                newString += (char)(string.charAt(i) + 32);
             } else {
-                newString += (char) (string.charAt(i));
+                newString += (char)(string.charAt(i));
             }
             
         }
