@@ -3,7 +3,7 @@ public class ArrayOps {
         System.out.println(findMissingInt(new int[] {3, 0, 1}));
         System.out.println(secondMaxValue(new int[] {1,2,3,4,5,8,8}));
         System.out.println(containsTheSameElements(new int[] {2, 2, 3, 7, 8, 3, 2}, new int[] {8, 2, 7, 7, 3}));
-        System.out.println(isSorted(new int[] {1,-2,3,4}));
+        System.out.println(isSorted(new int[] {1,2,3}));
 
         
     }
@@ -71,7 +71,7 @@ public class ArrayOps {
         for(int i = 1; i < array.length; i++) {
             if(array[i] >= array[i - 1]) {
                 increasing = true; 
-            } if (array[i] <= array[i - 1]) {
+            } else if (array[i] <= array[i - 1]) {
                 decreasing = true;
             }
              else {
