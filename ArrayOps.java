@@ -3,7 +3,7 @@ public class ArrayOps {
         System.out.println(findMissingInt(new int[] {3, 0, 1}));
         System.out.println(secondMaxValue(new int[] {1,2,3,4,5,8,8}));
         System.out.println(containsTheSameElements(new int[] {2, 2, 3, 7, 8, 3, 2}, new int[] {8, 2, 7, 7, 3}));
-        System.out.println(isSorted(new int[] {3, 2, 1}));
+        System.out.println(isSorted(new int[] {1,-2,3,4}));
 
         
     }
@@ -66,20 +66,20 @@ public class ArrayOps {
     }
 
     public static boolean isSorted(int [] array) {
-        boolean isBigger = false;
-        boolean isSmaller = false;
+        boolean increasing = false;
+        boolean decreasing = false;
         for(int i = 1; i < array.length; i++) {
             if(array[i] >= array[i - 1]) {
-                isBigger = true; 
-            } else if (array[i] <= array[i - 1]) {
-                isSmaller = true;
+                increasing = true; 
+            } if (array[i] <= array[i - 1]) {
+                decreasing = true;
             }
              else {
                 return false; 
             }
 
-            isBigger = false;
-            isSmaller = false;
+            increasing = false;
+            decreasing = false;
         }
         return true;
     }
