@@ -22,7 +22,7 @@ public class StringOps {
     ////// ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-        String str = "Hello";
+        String str = "One two tHRee world";
         System.out.println(capVowelsLowRest(str));
         System.out.println(camelCase("     hello    wOrLd"));
         // System.out.println(capVowelsLowRest("One two tHRee world"));
@@ -37,9 +37,10 @@ public class StringOps {
         String newString = "";
         for (int i = 0; i < string.length(); i++) {
             char charCurrent = string.charAt(i);
-            if (charCurrent == 'a' || charCurrent == 'e' || charCurrent == 'i' || charCurrent == 'o'
-                    || charCurrent == 'u') {
-                newString += (char) (charCurrent - 32);
+            if (charCurrent == 'a' || charCurrent == 'e' || charCurrent == 'i' || charCurrent == 'o'    || charCurrent == 'u') {
+                newString += (char) (charCurrent - 32);  
+            } else if (charCurrent == 'A' || charCurrent == 'E' || charCurrent == 'I' || charCurrent == 'O' || charCurrent == 'U') {
+                newString += charCurrent;
             } else if (charCurrent >= 65 && charCurrent <= 90) {
                 newString += (char) (charCurrent + 32);
             } else {
