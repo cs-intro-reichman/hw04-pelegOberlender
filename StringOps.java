@@ -1,95 +1,96 @@
-public class StringOps {
-    ////////////////////////////////////////////////////////////
-    ////// ///////
-    ////// Reminder: ///////
-    ////// allowed methods ///////
-    ////// ///////
-    ////// 1.charAt(int index) ///////
-    ////// 2.length() ///////
-    ////// 3.substring(int start) ///////
-    ////// 4.substring(int start,int ends) ///////
-    ////// 5.indexOf(String str) ///////
-    ////// ///////
-    ////// The rest are not allowed ! ///////
-    ////// if you want to use a different ///////
-    ////// method, and you can implement ///////
-    ////// it using material from the course ///////
-    ////// you need to implement a version of ///////
-    ////// the function by yourself. ///////
-    ////// ///////
-    ////// see example for substring ///////
-    ////// in Recitation 3 question 5 ///////
-    ////// ///////
-    ////////////////////////////////////////////////////////////
+public class ArrayOps {
     public static void main(String[] args) {
-        String str = "Hello";
-        System.out.println(capVowelsLowRest(str));
-        System.out.println(camelCase("     hello    wOrLd"));
-        // System.out.println(capVowelsLowRest("One two tHRee world"));
-        int[] array = allIndexOf("MMMM", 'M');
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
-        }
+        System.out.println(findMissingInt(new int[] {3, 0, 1}));
+        System.out.println(secondMaxValue(new int[] {1,2,3,4,5,8,8}));
+        System.out.println(containsTheSameElements(new int[] {2, 2, 3, 7, 8, 3, 2}, new int[] {8, 2, 7, 7, 3}));
+        System.out.println(isSorted(new int[] {1,-2,3,4}));
 
+        
     }
-
-    public static String capVowelsLowRest(String string) {
-        String newString = "";
-        for (int i = 0; i < string.length(); i++) {
-            char charCurrent = string.charAt(i);
-            if (charCurrent == 'a' || charCurrent == 'e' || charCurrent == 'i' || charCurrent == 'o'
-                    || charCurrent == 'u') {
-                newString += (char) (charCurrent - 32);
-            } else if (charCurrent >= 65 && charCurrent <= 90) {
-                newString += (char) (charCurrent + 32);
-            } else {
-                newString += charCurrent;
+    
+    public static int findMissingInt(int [] array) {
+        int missingInt = 0; 
+        for(int i = 0 ; i <= array.length ; i++) {
+            boolean found = false;
+            for(int j = 0; j < array.length; j++) {
+                if(array[j] == i) {
+                 found = true;
+                 break; 
+                }         
             }
-        }
-        return newString;
+            if (!found) {
+                 missingInt = i;
+                 break;
+            }
+         }
+         return missingInt;
     }
-
-    public static String camelCase(String string) {
-        String newString = "";
-        for (int i = 0; i < string.length(); i++) {
-            while (string.charAt(i) == ' ') {
-                i++;
-                if (newString != "" && string.charAt(i) != ' ') {
-                    if (string.charAt(i) >= 97 && string.charAt(i) <= 122) {
-                        newString += (char)(string.charAt(i) - 32);
-                        i++;
-                    } else {
-                        newString += (char)(string.charAt(i));
-                        i++;
-                    }        
+    public static int secondMaxValue(int [] array) {
+            int firstMax = array[0];
+            for(int i = 1; i < array.length; i++) {
+                if(array[i] > firstMax) {
+                    firstMax = array[i];
                 } 
+
             }
-            if (string.charAt(i) >= 65 && string.charAt(i) <= 90) {
-                newString += (char)(string.charAt(i) + 32);
-            } else {
-                newString += (char)(string.charAt(i));
+            int count = 0;
+            int secondMax = 0;
+            for(int i = 1; i < array.length; i++) {
+                if(array [i] == firstMax) {
+                    count++;
+                }
+                if (count > 1) {
+                    secondMax = array[i];
+                }
+                if (array[i] < firstMax && array[i] > secondMax) {
+                    secondMax = array[i];
+                }
             }
-            
+            return secondMax;
+    } 
+
+    public static boolean containsTheSameElements(int [] array1,int [] array2) {
+        boolean found = false;
+        for(int i = 0; i < array1.length; i++) {
+            for(int j = 0; j < array2.length; j++) {
+                if(array1[i] == array2[j]) {
+                found = true;
+                }      
+            }
+        if(found == false) {
+            return found;
         }
-        return newString;
-       
+        found = false; 
+        }
+    return true; 
     }
 
-    public static int[] allIndexOf(String string, char chr) {
-        int counter = 0;
-        for (int i = 0; i < string.length(); i++) {
-            if (string.charAt(i) == chr) {
-                counter++;
+    public static boolean isSorted(int [] array) {
+        boolean increasing = false;
+        boolean decreasing = false;
+        for(int i = 1; i < array.length; i++) {
+            if(array[i] >= array[i - 1]) {
+                increasing = true;
+            } else {
+                increasing = false;
+                break;
+
             }
         }
-        int[] arrayChar = new int[counter];
-        int index = 0;
-        for (int i = 0; i < string.length(); i++) {
-            if (string.charAt(i) == chr) {
-                arrayChar[index] = i;
-                index++;
+        for(int i = 1; i < array.length; i++) {
+             if (array[i] <= array[i - 1]) {
+                decreasing = true;
+            } else {
+                 decreasing = false;
+                 break;
             }
         }
-        return arrayChar;
+        if(increasing || decreasing) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 }
+
